@@ -15,10 +15,6 @@ class FeedPageBurger(BasePage):
     def open_page(self,url):
        self.navigate(url)
 
-    @allure.step('Получать URL текущей страницы')
-    def get_current_url(self, url):
-        self.driver.get(url)
-        return self.driver.current_url
 
     @allure.step('Кликнуть на заказ и увидеть всплывающее окно с деталями')
     def click_order_open_popup_with_details(self):
@@ -29,40 +25,34 @@ class FeedPageBurger(BasePage):
     def get_order_details(self):
         element = self.find_element(StellaburgerLocators.POPUP_ORDER_IN_FEED_HISTORY).text
         return element
-    @allure.step('Получить идентификатор созданного заказа с уменьшенным таймаутом')
-    def get_order_identifier_with_decreased_timeout(self):
-        self.wait_for_element_invisible_with_adjustable_timeout(StellaburgerLocators.DUPLICATE_MODAL_ID_ORDER, 2)
-        self.wait_for_element_visible_with_adjustable_timeout(StellaburgerLocators.CLOSE_POPUP_ID_ORDER, 3)
-        element = self.find_element_with_adjustable_timeout(StellaburgerLocators.IDENTIFIER_ORDER, 1).text
-        return f'0{element}'
 
     @allure.step('Получить идентификатор созданного заказа')
     def get_order_identifier(self):
         self.wait_for_element_invisible(StellaburgerLocators.DUPLICATE_MODAL_ID_ORDER)
-        element = self.find_element_with_adjustable_timeout(StellaburgerLocators.IDENTIFIER_ORDER, 3).text
+        element = self.find_element(StellaburgerLocators.IDENTIFIER_ORDER, 3).text
         return f'0{element}'
 
     @allure.step('Дождаться, что дублирующее окно будет невидимым с очень увеличенным таймаутом')
     def wait_window_invisible_with_very_increased_timeout(self):
-        self.wait_for_element_invisible_with_adjustable_timeout(StellaburgerLocators.DUPLICATE_MODAL_ID_ORDER, 20)
-        self.wait_for_element_visible_with_adjustable_timeout(StellaburgerLocators.CLOSE_POPUP_ID_ORDER, 3)
+        self.wait_for_element_invisible(StellaburgerLocators.DUPLICATE_MODAL_ID_ORDER, 20)
         self.find_element(StellaburgerLocators.IDENTIFIER_ORDER)
+
     @allure.step('Дождаться, что дублирующее окно будет невидимым с увеличенным таймаутом')
     def wait_window_invisible_with_increased_timeout(self):
-        self.wait_for_element_invisible_with_adjustable_timeout(StellaburgerLocators.DUPLICATE_MODAL_ID_ORDER, 15)
-        self.wait_for_element_visible_with_adjustable_timeout(StellaburgerLocators.CLOSE_POPUP_ID_ORDER, 3)
+        self.wait_for_element_invisible(StellaburgerLocators.DUPLICATE_MODAL_ID_ORDER, 15)
         self.find_element(StellaburgerLocators.IDENTIFIER_ORDER)
+
     @allure.step('Закрыть всплывающее окно с идентификатором заказа')
     def close_popup_with_order_identifier(self):
-        self.click_element_with_adjustable_timeout(StellaburgerLocators.CLOSE_BUTTON_POPUP_ID_ORDER, 10)
+        self.click_element(StellaburgerLocators.CLOSE_BUTTON_POPUP_ID_ORDER, 10)
 
     @allure.step('Закрыть всплывающее окно с идентификатором заказа с уменьшенным таймаутом')
     def close_popup_with_order_identifier_with_decreased_timeout(self):
-        self.click_element_with_adjustable_timeout(StellaburgerLocators.CLOSE_BUTTON_POPUP_ID_ORDER, 1)
+        self.click_element(StellaburgerLocators.CLOSE_BUTTON_POPUP_ID_ORDER, 3)
 
     @allure.step('Получить идентификатор заказа в работе')
     def get_order_identifier_in_progress(self):
-        element = self.find_element_with_adjustable_timeout(StellaburgerLocators.IDENTIFIER_ORDER_IN_PROGRESS, 3).text
+        element = self.find_element(StellaburgerLocators.IDENTIFIER_ORDER_IN_PROGRESS, 5).text
         return element
 
     @allure.step('Перейти по ссылке к регистрации')
@@ -126,4 +116,4 @@ class FeedPageBurger(BasePage):
 
     @allure.step('Закрыть блокирующее окно для тестирования в Firefox с увеличенным таймаутом')
     def close_duplicate_window_with_increased_timeout(self):
-        self.wait_for_element_invisible_with_adjustable_timeout(StellaburgerLocators.DUPLICATE_MODAL_ID_ORDER, 20)
+        self.wait_for_element_invisible(StellaburgerLocators.DUPLICATE_MODAL_ID_ORDER, 20)

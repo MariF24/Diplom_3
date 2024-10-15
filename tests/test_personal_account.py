@@ -29,11 +29,12 @@ class TestStellaburgerLogin:
         login_page.click_login_button()
         feed_page.close_duplicate_window_with_increased_timeout()
         login_page.link_account_user()
+        feed_page.close_duplicate_window_with_increased_timeout()
         login_page.get_orders_history_button_text()
         feed_page.close_duplicate_window_with_increased_timeout()
         login_page.link_orders_history()
 
-        assert login_page.get_current_url(PAGE_ORDERS_HISTORY) == 'https://stellarburgers.nomoreparties.site/account/order-history'
+        assert login_page.get_current_url_history(PAGE_ORDERS_HISTORY) == 'https://stellarburgers.nomoreparties.site/account/order-history'
 
     @allure.title('Выход из аккаунта')
     def test_check_logout(self, driver):
@@ -46,6 +47,7 @@ class TestStellaburgerLogin:
         login_page.enter_password(PASSWORD)
         login_page.click_login_button()
         login_page.link_account_user()
+        feed_page.close_duplicate_window_with_increased_timeout()
         login_page.click_logout_button()
 
         assert login_page.get_login_button_text() == 'Войти'

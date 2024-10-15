@@ -16,10 +16,12 @@ class LoginPageBurger(BasePage):
     def open_page(self,url):
        self.navigate(url)
 
-    @allure.step('Получать URL текущей страницы')
-    def get_current_url(self, url):
-        self.driver.get(url)
-        return self.driver.current_url
+
+    @allure.step('Получить URL страницы История заказов')
+    def get_current_url_history(self, url):
+        self.get_current_url(url)
+        return url
+
 
     @allure.step('Перейти по кнопке в личный кабинет для авторизации')
     def link_account_page(self):

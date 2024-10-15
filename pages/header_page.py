@@ -14,10 +14,6 @@ class HeaderPageBurger(BasePage):
     def open_page(self,url):
        self.navigate(url)
 
-    @allure.step('Получать URL текущей страницы')
-    def get_current_url(self, url):
-        self.driver.get(url)
-        return self.driver.current_url
 
     @allure.step('Перейти по клику на Конструктор')
     def link_constructor(self):
@@ -26,9 +22,9 @@ class HeaderPageBurger(BasePage):
 
     @allure.step('Перейти по клику на Лента заказов')
     def link_feed(self):
-        self.click_element_with_adjustable_timeout(StellaburgerLocators.FEED_BUTTON, 3)
-        self.wait_for_element_visible_with_adjustable_timeout(StellaburgerLocators.IN_PROGRESS_TEXT, 4)
+        self.click_element(StellaburgerLocators.FEED_BUTTON, 3)
+        self.wait_for_element_visible(StellaburgerLocators.IN_PROGRESS_TEXT, 4)
 
     @allure.step('Перейти по клику на Лента заказов с уменьшенным таймаутом')
     def link_feed_for_decreased_timeout(self):
-        self.click_element_with_adjustable_timeout(StellaburgerLocators.FEED_BUTTON, 1)
+        self.click_element(StellaburgerLocators.FEED_BUTTON, 1)

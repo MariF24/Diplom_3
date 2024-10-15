@@ -96,31 +96,30 @@ class StellaburgerLocators:
     POPUP_INGREDIENT = (By.XPATH, "//h2[contains(@class,'Modal_modal__title') and (text() ='Детали ингредиента')]")
 
     # Кнопка Закрыть информацию об ингредиенте
-    CLOSE_POPUP_INGREDIENT = (By.XPATH, "//section[1]//button[contains(@class,'Modal_modal__close__TnseK')]")
-
-    # Закрыть Попап с информацией об идентификаторе заказа после оформления,в Ленте заказов и Истории заказов
-    CLOSE_POPUP_ID_ORDER = (By.XPATH, "//section[2]//button[contains(@class,'Modal_modal__close__TnseK')]")
+    CLOSE_POPUP_INGREDIENT = (By.XPATH, "//section[contains(@class, 'Modal_modal_opened')]//button[contains(@class,'Modal_modal__close__TnseK')]")
 
     #Кнопка Закрыть попап с информацией об идентификаторе заказа
     CLOSE_BUTTON_POPUP_ID_ORDER = (By.XPATH, "//button[contains(@class,'Modal_modal__close__TnseK')]")
 
     #Количество ингредиента
-    COUNT_INGREDIENT = (By.XPATH, "//section[1]/div[2]/ul[1]/a[1]/div[1]/p")
+    COUNT_INGREDIENT = (By.XPATH, "//a[(@href = '/ingredient/61c0c5a71d1f82001bdaaa6d')]//p[contains(@class,'counter_counter__num__3nue1')]")
 
     #Попап с информацией об идентификаторе заказа
     POPUP_ID_ORDER = (By.XPATH, "//p[contains(text(),'идентификатор заказа')]")
 
     # Идентификатор заказа в Ленте заказов и Истории заказов
-    IDENTIFIER_ORDER_IN_FEED_AND_HISTORY = (By.XPATH, "//li[1]/a/div[1]/p[1]")
+    IDENTIFIER_ORDER_IN_FEED_AND_HISTORY = (By.XPATH, "//li[1]//div[contains(@class,'textBox')]//p[contains(@class,'text_type_digits')]")
+   # В этом локаторе не получилось убрать порядковый номер после li, то есть другой недублирующий найти не удалось
+
 
     # Попап созданного заказа в Ленте заказов и Истории заказов
-    POPUP_ORDER_IN_FEED_HISTORY = (By.XPATH, "//section[2]/div[1]/div")
+    POPUP_ORDER_IN_FEED_HISTORY = (By.XPATH, "//div[contains(@class,'Modal_modal__container')]//div[contains(@class,'Modal_orderBox')]")
 
     #Номер идентификатора заказа
-    IDENTIFIER_ORDER = (By.XPATH, "//div[1]/h2[contains(text(),'')]")
+    IDENTIFIER_ORDER = (By.XPATH, "//div[contains(@class,'Modal_modal__contentBox')]/h2[contains(text(),'')]")
 
     # Номер идентификатора заказа В работе
-    IDENTIFIER_ORDER_IN_PROGRESS = (By.XPATH, "//div[1]/ul[2]/li")
+    IDENTIFIER_ORDER_IN_PROGRESS = (By.XPATH, "//ul[contains(@class,'orderListReady')]/li")
 
     # Ссылка Зарегистрироваться
     REGISTRATION_LINK = (By.XPATH, "//a[contains(@href,'/register')]")
@@ -132,10 +131,10 @@ class StellaburgerLocators:
     NAME_FIELD = (By.XPATH, "//label[(text()='Имя')]/../input")
 
     # Количество заказов Выполнено за все время
-    COUNT_ORDERS_ALL = (By.XPATH, "//div[2]/p[2][contains(@class,'OrderFeed_number')]")
+    COUNT_ORDERS_ALL = (By.XPATH, "//p[contains(text(),'за все время')]/..//p[contains(@class,'OrderFeed_number')]")
 
     #Количество заказов Выполнено за сегодня
-    COUNT_ORDERS_TODAY = (By.XPATH, "//div[3]/p[2][contains(@class,'OrderFeed_number')]")
+    COUNT_ORDERS_TODAY = (By.XPATH, "//p[contains(text(),'за сегодня')]/..//p[contains(@class,'OrderFeed_number')]")
 
     # Дублирующее окно при создании заказа и блокирующее окно при открытии главной страницы в браузере Firefox
     DUPLICATE_MODAL_ID_ORDER = (By.XPATH, "//div/div[contains(@class,'Modal_modal_overlay__x2ZCr')]")

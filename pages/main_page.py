@@ -15,11 +15,10 @@ class MainPageBurger(BasePage):
     def open_page(self,url):
        self.navigate(url)
 
-
-    @allure.step('Получать URL текущей страницы')
-    def get_current_url(self, url):
-        self.driver.get(url)
-        return self.driver.current_url
+    @allure.step('Получить URL страницы Лента заказов')
+    def get_current_url_feed(self, url):
+        self.get_current_url(url)
+        return url
 
 
     @allure.step('Найти кнопку Войти в аккаунт и получить ее текст')
@@ -96,7 +95,3 @@ class MainPageBurger(BasePage):
         element = self.find_element(StellaburgerLocators.POPUP_ID_ORDER).text
         return element
 
-    @allure.step('Закрыть всплывающее окно с идентификатором заказа')
-    def close_popup_with_identifier(self):
-        self.click_element(StellaburgerLocators.CLOSE_POPUP_ID_ORDER)
-        self.click_element(StellaburgerLocators.LOGO_FIELD)

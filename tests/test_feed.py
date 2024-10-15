@@ -35,10 +35,11 @@ class TestStellaburgerFeedPage:
         login_page.click_login_button()
         main_page.add_four_ingredients_in_order()
         main_page.click_checkout_open_popup_with_identifier()
-        expected_result = feed_page.get_order_identifier_with_decreased_timeout()
+        expected_result = feed_page.get_order_identifier()
         feed_page.close_popup_with_order_identifier_with_decreased_timeout()
         header_page.link_feed_for_decreased_timeout()
         assert expected_result == feed_page.get_order_identifier_in_progress()
+
 
 
     @allure.title('Проверить, что заказы пользователя из Истории заказов отображаются в Ленте заказов')

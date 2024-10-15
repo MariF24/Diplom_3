@@ -16,11 +16,6 @@ class PasswordRecoveryPageBurger(BasePage):
     def open_page(self,url):
        self.navigate(url)
 
-
-    @allure.step('Получать URL текущей страницы')
-    def get_current_url(self, url):
-        self.driver.get(url)
-        return self.driver.current_url
     @allure.step('Перейти по ссылке восстановления пароля на страницу восстановления пароля')
     def link_password_recovery(self):
         self.click_element(StellaburgerLocators.PASSWORD_RECOVERY_LINK)
