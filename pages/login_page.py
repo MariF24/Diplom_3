@@ -17,12 +17,6 @@ class LoginPageBurger(BasePage):
        self.navigate(url)
 
 
-    @allure.step('Получить URL страницы История заказов')
-    def get_current_url_history(self, url):
-        self.get_current_url(url)
-        return url
-
-
     @allure.step('Перейти по кнопке в личный кабинет для авторизации')
     def link_account_page(self):
         self.click_element(StellaburgerLocators.ACCOUNT_BUTTON)

@@ -15,11 +15,6 @@ class MainPageBurger(BasePage):
     def open_page(self,url):
        self.navigate(url)
 
-    @allure.step('Получить URL страницы Лента заказов')
-    def get_current_url_feed(self, url):
-        self.get_current_url(url)
-        return url
-
 
     @allure.step('Найти кнопку Войти в аккаунт и получить ее текст')
     def get_login_account_button_text(self):

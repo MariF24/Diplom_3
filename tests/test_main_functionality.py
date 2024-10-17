@@ -32,7 +32,7 @@ class TestStellaburgerMainPage:
         feed_page.close_duplicate_window()
         header_page.link_feed()
 
-        assert main_page.get_current_url_feed(PAGE_ORDERS_FEED) == 'https://stellarburgers.nomoreparties.site/feed'
+        assert main_page.get_current_url(PAGE_ORDERS_FEED) == 'https://stellarburgers.nomoreparties.site/feed'
 
     @allure.title('Кликнуть на ингредиент и увидеть всплывающее окно с деталями')
     def test_click_open_popup_ingredient(self, driver):
